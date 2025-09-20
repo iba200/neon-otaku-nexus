@@ -13,6 +13,10 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        orbitron: ["Orbitron", "monospace"],
+        inter: ["Inter", "sans-serif"],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -56,6 +60,18 @@ export default {
           "accent-foreground": "hsl(var(--sidebar-accent-foreground))",
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
+        },
+        // Neon colors for Tokyo night theme
+        neon: {
+          pink: "hsl(var(--neon-pink))",
+          blue: "hsl(var(--neon-blue))",
+          yellow: "hsl(var(--neon-yellow))",
+          purple: "hsl(var(--neon-purple))",
+          cyan: "hsl(var(--cyber-cyan))",
+        },
+        space: {
+          grey: "hsl(var(--space-grey))",
+          deep: "hsl(var(--deep-space))",
         },
       },
       borderRadius: {

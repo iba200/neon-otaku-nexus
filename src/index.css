@@ -1,42 +1,69 @@
+@import '@fontsource/orbitron/400.css';
+@import '@fontsource/orbitron/700.css';
+@import '@fontsource/orbitron/900.css';
+@import '@fontsource/inter/400.css';
+@import '@fontsource/inter/500.css';
+@import '@fontsource/inter/600.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Otaku Neon Design System - Tokyo Night Theme */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-
-    --radius: 0.5rem;
+    /* Tokyo Night Neon Color Palette */
+    --neon-pink: 330 100% 64%;           /* #FF4C8B */
+    --neon-blue: 214 100% 62%;           /* #3A86FF */
+    --dark-violet: 248 25% 14%;          /* #1E1B29 */
+    --neon-yellow: 42 100% 70%;          /* #FFD166 */
+    --off-white: 0 0% 96%;               /* #F5F5F5 */
+    
+    /* Extended palette for depth */
+    --deep-space: 248 30% 8%;            /* Darker background */
+    --space-grey: 248 15% 25%;           /* Mid-tone */
+    --neon-purple: 270 70% 60%;          /* Additional neon */
+    --cyber-cyan: 180 100% 70%;          /* Additional accent */
+    
+    /* Semantic tokens */
+    --background: var(--deep-space);
+    --foreground: var(--off-white);
+    
+    --card: 248 25% 16%;
+    --card-foreground: var(--off-white);
+    
+    --primary: var(--neon-pink);
+    --primary-foreground: var(--deep-space);
+    
+    --secondary: var(--neon-blue);
+    --secondary-foreground: var(--deep-space);
+    
+    --accent: var(--neon-yellow);
+    --accent-foreground: var(--deep-space);
+    
+    --muted: var(--space-grey);
+    --muted-foreground: var(--off-white);
+    
+    --border: 248 25% 20%;
+    --input: 248 25% 18%;
+    --ring: var(--neon-pink);
+    
+    --destructive: 0 100% 60%;
+    --destructive-foreground: var(--off-white);
+    
+    /* Glow effects */
+    --glow-pink: 0 0 20px hsl(var(--neon-pink) / 0.5);
+    --glow-blue: 0 0 20px hsl(var(--neon-blue) / 0.5);
+    --glow-yellow: 0 0 20px hsl(var(--neon-yellow) / 0.5);
+    --glow-purple: 0 0 20px hsl(var(--neon-purple) / 0.5);
+    
+    /* Gradients */
+    --gradient-neon: linear-gradient(135deg, hsl(var(--neon-pink)), hsl(var(--neon-blue)));
+    --gradient-dark: linear-gradient(135deg, hsl(var(--deep-space)), hsl(var(--dark-violet)));
+    --gradient-card: linear-gradient(145deg, hsl(var(--card) / 0.8), hsl(var(--dark-violet) / 0.6));
+    
+    --radius: 0.75rem;
 
     --sidebar-background: 0 0% 98%;
 
@@ -55,42 +82,23 @@ All colors MUST be HSL.
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
+  /* Dark mode uses same colors - we're always in Tokyo night mode */
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --background: var(--deep-space);
+    --foreground: var(--off-white);
+    --card: 248 25% 16%;
+    --card-foreground: var(--off-white);
+    --primary: var(--neon-pink);
+    --primary-foreground: var(--deep-space);
+    --secondary: var(--neon-blue);
+    --secondary-foreground: var(--deep-space);
+    --accent: var(--neon-yellow);
+    --accent-foreground: var(--deep-space);
+    --muted: var(--space-grey);
+    --muted-foreground: var(--off-white);
+    --border: 248 25% 20%;
+    --input: 248 25% 18%;
+    --ring: var(--neon-pink);
   }
 }
 
@@ -100,6 +108,122 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-inter overflow-x-hidden;
+    background: var(--gradient-dark);
+    min-height: 100vh;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-orbitron;
+  }
+}
+
+@layer components {
+  /* Neon Glow Classes */
+  .glow-pink {
+    box-shadow: var(--glow-pink);
+  }
+  
+  .glow-blue {
+    box-shadow: var(--glow-blue);
+  }
+  
+  .glow-yellow {
+    box-shadow: var(--glow-yellow);
+  }
+  
+  .glow-purple {
+    box-shadow: var(--glow-purple);
+  }
+  
+  /* Neon Text Effects */
+  .text-neon-pink {
+    color: hsl(var(--neon-pink));
+    text-shadow: 0 0 10px hsl(var(--neon-pink) / 0.5);
+  }
+  
+  .text-neon-blue {
+    color: hsl(var(--neon-blue));
+    text-shadow: 0 0 10px hsl(var(--neon-blue) / 0.5);
+  }
+  
+  .text-neon-yellow {
+    color: hsl(var(--neon-yellow));
+    text-shadow: 0 0 10px hsl(var(--neon-yellow) / 0.5);
+  }
+  
+  /* Floating Background Animation */
+  .floating-orbs::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+      radial-gradient(circle at 20% 30%, hsl(var(--neon-pink) / 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 70%, hsl(var(--neon-blue) / 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 40% 80%, hsl(var(--neon-yellow) / 0.05) 0%, transparent 50%);
+    animation: float 20s ease-in-out infinite;
+    pointer-events: none;
+    z-index: -1;
+  }
+  
+  /* Card Glass Effect */
+  .glass-card {
+    background: var(--gradient-card);
+    backdrop-filter: blur(10px);
+    border: 1px solid hsl(var(--border) / 0.2);
+  }
+  
+  /* Hover transitions */
+  .hover-glow-pink {
+    transition: all 0.3s ease;
+  }
+  
+  .hover-glow-pink:hover {
+    box-shadow: var(--glow-pink);
+    transform: translateY(-2px);
+  }
+  
+  .hover-glow-blue {
+    transition: all 0.3s ease;
+  }
+  
+  .hover-glow-blue:hover {
+    box-shadow: var(--glow-blue);
+    transform: translateY(-2px);
+  }
+}
+
+@layer utilities {
+  /* Custom animations */
+  @keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    25% { transform: translateY(-20px) rotate(1deg); }
+    50% { transform: translateY(-10px) rotate(-1deg); }
+    75% { transform: translateY(-15px) rotate(0.5deg); }
+  }
+  
+  @keyframes pulse-neon {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.8; }
+  }
+  
+  @keyframes slide-in {
+    from { transform: translateX(-100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+  }
+  
+  .animate-float {
+    animation: float 20s ease-in-out infinite;
+  }
+  
+  .animate-pulse-neon {
+    animation: pulse-neon 2s ease-in-out infinite;
+  }
+  
+  .animate-slide-in {
+    animation: slide-in 0.5s ease-out;
   }
 }
