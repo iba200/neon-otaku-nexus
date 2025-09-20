@@ -1,4 +1,3 @@
-import { MainLayout } from "@/components/layout/main-layout";
 import { MemberCard } from "@/components/ui/member-card";
 import { Trophy, Medal, Award, Star } from "lucide-react";
 
@@ -141,8 +140,7 @@ const Classement = () => {
   ];
 
   return (
-    <MainLayout>
-      <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-4 py-8">
         {/* Header */}
         <div className="text-center mb-8">
           <h1 className="text-4xl font-orbitron font-bold text-neon-yellow mb-4 glow-yellow">
@@ -284,8 +282,7 @@ const Classement = () => {
           </div>
         </div>
       </div>
-    </MainLayout>
-  );
+    );
 };
 
 export default Classement;

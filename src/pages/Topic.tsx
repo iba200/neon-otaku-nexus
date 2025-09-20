@@ -1,4 +1,3 @@
-import { MainLayout } from "@/components/layout/main-layout";
 import { Button } from "@/components/ui/button";
 import { useParams } from "react-router-dom";
 import { Eye, MessageCircle, Heart, Share2, Clock } from "lucide-react";
@@ -77,8 +76,7 @@ const Topic = () => {
   ];
 
   return (
-    <MainLayout>
-      <div className="container mx-auto px-4 py-8 max-w-4xl">
+    <div className="container mx-auto px-4 py-8 max-w-4xl">
         {/* Topic Header */}
         <div className="glass-card rounded-xl p-6 mb-8">
           <div className="flex items-start justify-between mb-4">
@@ -222,8 +220,7 @@ const Topic = () => {
           </div>
         </div>
       </div>
-    </MainLayout>
-  );
+    );
 };
 
 export default Topic;

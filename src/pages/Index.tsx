@@ -1,4 +1,3 @@
-import { MainLayout } from "@/components/layout/main-layout";
 import { ArticleCard } from "@/components/ui/article-card";
 import { ForumTopicCard } from "@/components/ui/forum-topic-card";
 import { MemberCard } from "@/components/ui/member-card";
@@ -108,8 +107,7 @@ const Index = () => {
   ];
 
   return (
-    <MainLayout>
-      <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-4 py-8">
         {/* Hero Section */}
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-6xl font-orbitron font-black mb-4 text-neon-pink animate-pulse-neon">
@@ -182,9 +180,8 @@ const Index = () => {
               </div>
             </section>
           </div>
-        </div>
       </div>
-    </MainLayout>
+    </div>
   );
 };
 

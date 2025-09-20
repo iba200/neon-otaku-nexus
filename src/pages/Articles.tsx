@@ -1,4 +1,3 @@
-import { MainLayout } from "@/components/layout/main-layout";
 import { ArticleCard } from "@/components/ui/article-card";
 import { Button } from "@/components/ui/button";
 import { Search, Filter } from "lucide-react";
@@ -71,8 +70,7 @@ const Articles = () => {
     : articles.filter(article => article.category === selectedCategory);
 
   return (
-    <MainLayout>
-      <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-4 py-8">
         {/* Header */}
         <div className="text-center mb-8">
           <h1 className="text-4xl font-orbitron font-bold text-neon-blue mb-4 glow-blue">
@@ -134,9 +132,8 @@ const Articles = () => {
           <Button variant="ghost">
             Suivant
           </Button>
-        </div>
       </div>
-    </MainLayout>
+    </div>
   );
 };
 

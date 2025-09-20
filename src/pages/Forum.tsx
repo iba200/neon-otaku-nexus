@@ -1,4 +1,3 @@
-import { MainLayout } from "@/components/layout/main-layout";
 import { ForumTopicCard } from "@/components/ui/forum-topic-card";
 import { Button } from "@/components/ui/button";
 import { Plus, Search, Filter } from "lucide-react";
@@ -80,8 +79,7 @@ const Forum = () => {
     : topics.filter(topic => topic.category === selectedCategory);
 
   return (
-    <MainLayout>
-      <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-4 py-8">
         {/* Header */}
         <div className="text-center mb-8">
           <h1 className="text-4xl font-orbitron font-bold text-neon-yellow mb-4 glow-yellow">
@@ -169,8 +167,7 @@ const Forum = () => {
           </Button>
         </div>
       </div>
-    </MainLayout>
-  );
+    );
 };
 
 export default Forum;

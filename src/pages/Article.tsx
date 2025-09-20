@@ -1,4 +1,3 @@
-import { MainLayout } from "@/components/layout/main-layout";
 import { Button } from "@/components/ui/button";
 import { useParams } from "react-router-dom";
 import { Calendar, User, Heart, Share2, MessageCircle } from "lucide-react";
@@ -65,8 +64,7 @@ const Article = () => {
   ];
 
   return (
-    <MainLayout>
-      <article className="container mx-auto px-4 py-8 max-w-4xl">
+    <article className="container mx-auto px-4 py-8 max-w-4xl">
         {/* Hero Image */}
         <div className="aspect-video relative overflow-hidden rounded-2xl mb-8 glow-blue">
           <img 
@@ -178,8 +176,7 @@ const Article = () => {
           </div>
         </section>
       </article>
-    </MainLayout>
-  );
+    );
 };
 
 export default Article;

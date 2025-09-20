@@ -1,4 +1,3 @@
-import { MainLayout } from "@/components/layout/main-layout";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { User, Mail, Lock, Eye, EyeOff } from "lucide-react";
@@ -9,8 +8,7 @@ const Register = () => {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   return (
-    <MainLayout>
-      <div className="container mx-auto px-4 py-12">
+    <div className="container mx-auto px-4 py-12">
         <div className="max-w-md mx-auto">
           {/* Header */}
           <div className="text-center mb-8">
@@ -192,8 +190,7 @@ const Register = () => {
           </div>
         </div>
       </div>
-    </MainLayout>
-  );
+    );
 };
 
 export default Register;

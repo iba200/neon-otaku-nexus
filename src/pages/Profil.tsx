@@ -1,4 +1,3 @@
-import { MainLayout } from "@/components/layout/main-layout";
 import { Button } from "@/components/ui/button";
 import { ArticleCard } from "@/components/ui/article-card";
 import { ForumTopicCard } from "@/components/ui/forum-topic-card";
@@ -80,8 +79,7 @@ const Profil = () => {
   ];
 
   return (
-    <MainLayout>
-      <div className="container mx-auto px-4 py-8 max-w-6xl">
+    <div className="container mx-auto px-4 py-8 max-w-6xl">
         {/* Profile Header */}
         <div className="glass-card rounded-xl overflow-hidden mb-8">
           {/* Cover Image */}
@@ -247,8 +245,7 @@ const Profil = () => {
           </div>
         </div>
       </div>
-    </MainLayout>
-  );
+    );
 };
 
 export default Profil;
