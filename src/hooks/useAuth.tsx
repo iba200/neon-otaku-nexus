@@ -14,8 +14,11 @@ interface AuthContextType {
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const useAuth = () => {
+  console.log('useAuth called');
   const context = useContext(AuthContext);
+  console.log('AuthContext value:', context);
   if (context === undefined) {
+    console.error('useAuth called outside AuthProvider');
     throw new Error('useAuth must be used within an AuthProvider');
   }
   return context;
@@ -26,6 +29,7 @@ interface AuthProviderProps {
 }
 
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
+  console.log('AuthProvider rendering');
   const [user, setUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const { toast } = useToast();
@@ -133,5 +137,5 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     refreshAuth,
   };
 
-  return React.createElement(AuthContext.Provider, { value }, children);
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };

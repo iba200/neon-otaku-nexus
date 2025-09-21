@@ -5,9 +5,12 @@ import { Button } from "./button";
 import { useAuth } from "../../hooks/useAuth";
 
 export const Navigation = () => {
+  console.log('Navigation component rendering');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
+  console.log('About to call useAuth');
   const { user, logout } = useAuth();
+  console.log('useAuth returned:', { user, logout });
 
   const navItems = [
     { name: "Accueil", path: "/" },
