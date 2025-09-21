@@ -1,11 +1,13 @@
 import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, User, LogOut } from "lucide-react";
 import { Button } from "./button";
+import { useAuth } from "../../hooks/useAuth";
 
 export const Navigation = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
+  const { user, logout } = useAuth();
 
   const navItems = [
     { name: "Accueil", path: "/" },
@@ -43,9 +45,39 @@ export const Navigation = () => {
                 {item.name}
               </Link>
             ))}
-            <Button variant="neon" size="sm">
-              Connexion
-            </Button>
+            
+            {user ? (
+              <div className="flex items-center space-x-3">
+                <Link
+                  to="/profil"
+                  className="flex items-center space-x-2 px-3 py-2 rounded-lg font-medium text-foreground hover:text-neon-blue hover-glow-blue transition-all duration-300"
+                >
+                  <User size={16} />
+                  <span>{user.username}</span>
+                </Link>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={logout}
+                  className="text-muted-foreground hover:text-red-400"
+                >
+                  <LogOut size={16} />
+                </Button>
+              </div>
+            ) : (
+              <div className="flex items-center space-x-2">
+                <Link to="/login">
+                  <Button variant="ghost" size="sm">
+                    Connexion
+                  </Button>
+                </Link>
+                <Link to="/register">
+                  <Button variant="neon" size="sm">
+                    Inscription
+                  </Button>
+                </Link>
+              </div>
+            )}
           </div>
 
           {/* Mobile menu button */}
@@ -79,10 +111,44 @@ export const Navigation = () => {
                   {item.name}
                 </Link>
               ))}
-              <div className="pt-2">
-                <Button variant="neon" size="sm" className="w-full">
-                  Connexion
-                </Button>
+              <div className="pt-2 space-y-2">
+                {user ? (
+                  <>
+                    <Link
+                      to="/profil"
+                      className="flex items-center space-x-2 px-3 py-2 rounded-lg font-medium text-foreground hover:text-neon-blue hover-glow-blue transition-all duration-300"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      <User size={16} />
+                      <span>{user.username}</span>
+                    </Link>
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={() => {
+                        logout();
+                        setIsMobileMenuOpen(false);
+                      }}
+                      className="w-full text-muted-foreground hover:text-red-400"
+                    >
+                      <LogOut size={16} className="mr-2" />
+                      Déconnexion
+                    </Button>
+                  </>
+                ) : (
+                  <>
+                    <Link to="/login" onClick={() => setIsMobileMenuOpen(false)}>
+                      <Button variant="ghost" size="sm" className="w-full">
+                        Connexion
+                      </Button>
+                    </Link>
+                    <Link to="/register" onClick={() => setIsMobileMenuOpen(false)}>
+                      <Button variant="neon" size="sm" className="w-full">
+                        Inscription
+                      </Button>
+                    </Link>
+                  </>
+                )}
               </div>
             </div>
           </div>

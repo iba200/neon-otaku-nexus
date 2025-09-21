@@ -15,6 +15,8 @@ import Register from "./pages/Register";
 import NotFound from "./pages/NotFound";
 
 import { MainLayout } from "./components/layout/main-layout";
+import { AuthProvider } from "./hooks/useAuth";
+import { AuthGuard } from "./components/layout/auth-guard";
 
 const queryClient = new QueryClient();
 
@@ -24,22 +26,24 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <MainLayout>
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/articles" element={<Articles />} />
-            <Route path="/article/:id" element={<Article />} />
-            <Route path="/forum" element={<Forum />} />
-            <Route path="/topic/:id" element={<Topic />} />
-            <Route path="/classement" element={<Classement />} />
-            <Route path="/profil/:id" element={<Profil />} />
-            <Route path="/profil" element={<Profil />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </MainLayout>
+        <AuthProvider>
+          <MainLayout>
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/articles" element={<Articles />} />
+              <Route path="/article/:id" element={<Article />} />
+              <Route path="/forum" element={<Forum />} />
+              <Route path="/topic/:id" element={<Topic />} />
+              <Route path="/classement" element={<Classement />} />
+              <Route path="/profil/:id" element={<AuthGuard><Profil /></AuthGuard>} />
+              <Route path="/profil" element={<AuthGuard><Profil /></AuthGuard>} />
+              <Route path="/login" element={<AuthGuard requireAuth={false}><Login /></AuthGuard>} />
+              <Route path="/register" element={<AuthGuard requireAuth={false}><Register /></AuthGuard>} />
+              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </MainLayout>
+        </AuthProvider>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
